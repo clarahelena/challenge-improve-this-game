@@ -7,6 +7,7 @@ from rich.progress import Progress, BarColumn, TextColumn
 from rich.console import Console
 from rich.panel import Panel
 from rich import box
+import time
 
 console = Console()
 historico = []
@@ -27,7 +28,7 @@ Barras de Vida
 def barras_vida(heroi, vilao, vida_max_heroi, vida_max_vilao):
     progress = Progress(
         TextColumn("[bold]{task.description}"),
-        BarColumn(bar_width=None),
+        BarColumn(bar_width=30),
         TextColumn("[green]{task.fields[life]}"),
     )
     
@@ -65,7 +66,7 @@ def main():
             while heroi_selecionado_dados is None:
                 console.print(
                     Panel.fit(
-                        "\n".join(f"{i+1}. {h['nome']} (Vida: {h['vida']})" for i, h in enumerate(herois_lista)), title="[bold blue]Seleção de Herois[/]", border_style="blue"
+                        "\n".join(f"{i+1}. {heroi['nome']} (Vida: {heroi['vida']}, Ataque: {heroi['ataque']}, Defesa: {heroi['defesa']})" for i, heroi in enumerate(herois_lista)), title="[bold blue]Seleção de Herois[/]", border_style="blue"
                     ), justify="center"
                 )
                 print("Player 1 escolha seu heroi.")
@@ -83,13 +84,13 @@ def main():
             while vilao_selecionado_dados is None:
                 console.print(
                     Panel.fit(
-                        "\n".join(f"{i+1}. {v['nome']} (Vida: {v['vida']})" for i, v in enumerate(viloes_lista)),
+                        "\n".join(f"{i+1}. {vilao['nome']} (Vida: {vilao['vida']}, Ataque: {vilao['ataque']}, Defesa: {vilao['defesa']})" for i, vilao in enumerate(viloes_lista)),
                         title="[bold red]Seleção de Vilões[/]",
                         border_style="red"
                     ),
                     justify="center")
                 
-                vilao_selecionado = input("Escolha um heroi: ").strip()
+                vilao_selecionado = input("Escolha um vilão : ").strip()
 
                 indice_vilao = int(vilao_selecionado) - 1
                 if 0 <= indice_vilao < len(viloes_lista):
@@ -126,18 +127,19 @@ def main():
                 )
 
 
-            print('Iniciando jogo...')
+            print('\nIniciando jogo...')
+            time.sleep(2)
             print(f"Personagens escolhidos: {heroi} vs {vilao}")
 
             counter_rodads = 1
             while heroi.vida > 0 and vilao.vida > 0:
-                print(f"- Rodada {counter_rodads} -")
-                (heroi, vilao, heroi_selecionado_dados['vida'], vilao_selecionado_dados['vida'])
+                print(f"\n- Rodada {counter_rodads} -")
+                barras_vida(heroi, vilao, heroi_selecionado_dados['vida'], vilao_selecionado_dados['vida'])
 
                 aleatory_numero = random.randint(1, 2)
                 if aleatory_numero == 1:
                     print(f"\n- Turno de {heroi.nome} -")
-                    action = input("Insira sua ação (atacar, defender, cura, poção): ")
+                    action = input("\nInsira sua ação (atacar, defender, cura, poção): ")
                     if action == 'atacar':
                         heroi.atacar(vilao)
                         heroi.dialogar('ataque')
