@@ -1,7 +1,7 @@
 
 herois_lista = [{
         'tipo': 'Heroi',
-        'nome': 'Link',
+        'nome': 'Wang Hao',
         'idade': 30,
         'vida': 100,
         'ataque': 12,
@@ -9,7 +9,7 @@ herois_lista = [{
     },
     {
         'tipo': 'Heroi',
-        'nome': 'Zelda',
+        'nome': 'Xin Zhao',
         'idade': 28,
         'vida': 90,
         'ataque': 16,
@@ -17,7 +17,7 @@ herois_lista = [{
     },
     {
         'tipo': 'Heroi',
-        'nome': 'Mario',
+        'nome': 'Zhao Ling',
         'idade': 25,
         'vida': 110,
         'ataque': 10,
@@ -27,7 +27,7 @@ herois_lista = [{
 
 viloes_lista = [{
         'tipo': 'Vilao',
-        'nome': 'Ganon',
+        'nome': 'Wei',
         'idade': 45,
         'vida': 110,
         'ataque': 12,
@@ -36,7 +36,7 @@ viloes_lista = [{
     },
     {
         'tipo': 'Vilao',
-        'nome': 'Bowser',
+        'nome': 'Wang Hao',
         'idade': 50,
         'vida': 100,
         'ataque': 14,
@@ -45,7 +45,7 @@ viloes_lista = [{
     },
     {
         'tipo': 'Vilao',
-        'nome': 'Vaati',
+        'nome': 'Jiang Fan',
         'idade': 100,
         'vida': 85,
         'ataque': 18,
